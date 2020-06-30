@@ -1,0 +1,28 @@
+CC = tcc
+LD = $CC
+
+VERSION = 0.1
+NAME = xpix
+
+ROOT = $HOME/local
+BIN = $ROOT/bin
+
+USR = /usr
+USRLIB = -L$USR/lib
+USRINC = -I$USR/include
+
+X11 = $USR/X11R6
+X11INC = -I$X11/include
+X11LIB = -L$X11/lib -lX11
+
+#CLIB = -lc
+
+INC = $USRINC $X11INC 
+LIB = $USRLIB $X11LIB $CLIB
+
+CPPFLAGS = $INC \
+	-DVERSION=\"$VERSION\" \
+	-DNAME=\"$NAME\"
+CFLAGS = $CPPFLAGS
+LDFLAGS  = $LIB 
+
